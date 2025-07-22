@@ -1,3 +1,4 @@
+import org.gradle.kotlin.dsl.implementation
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -7,6 +8,10 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
+    kotlin("plugin.serialization") version "2.1.21"
 }
 
 kotlin {
@@ -33,6 +38,8 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+
+
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -43,6 +50,31 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+
+
+
+            implementation(libs.datastore.preferences)
+            implementation(libs.jetbrains.kotlinx)
+            implementation(libs.coil.compose)
+            implementation(libs.androidx.room.runtime)
+            implementation(libs.sqlite.bundled)
+            implementation(libs.io.coil.kt.coil3)
+            implementation(libs.com.russhwolf)
+            implementation(libs.components.resources)
+
+            // Navigation
+            implementation(libs.backHandler)
+            implementation(libs.navigation)
+
+            // material icon
+//            implementation(libs.androidx.compose)
+
+
+
+            // room database
+            implementation(libs.androidx.room.runtime)
+            implementation(libs.sqlite.bundled)
+            implementation(libs.sqlite)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -77,7 +109,19 @@ android {
     }
 }
 
-dependencies {
-    debugImplementation(compose.uiTooling)
+
+
+room {
+    schemaDirectory("$projectDir/schemas")
 }
 
+dependencies{
+
+    ksp(libs.androidx.room.compiler)
+    add("kspAndroid", libs.androidx.room.compiler)
+    add("kspIosSimulatorArm64", libs.androidx.room.compiler)
+//    add("kspIosX64", libs.androidx.room.compiler)
+    add("kspIosArm64", libs.androidx.room.compiler)
+
+    debugImplementation(compose.uiTooling)
+}

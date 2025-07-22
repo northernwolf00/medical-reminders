@@ -14,6 +14,34 @@ composeMultiplatform = "1.8.2"
 junit = "4.13.2"
 kotlin = "2.2.0"
 
+
+
+# Compose & UI
+compose-ui = "1.8.3"
+coil-svg = "3.2.0"
+material = "1.12.0"
+material-icons = "1.7.8"
+
+# Data
+serialization = "1.8.1"
+coil = "3.2.0"
+datastore = "1.1.7"
+foundation = "1.8.2"
+ksp = "2.1.21-2.0.1"
+sqlite = "2.5.1"
+androidx-room = "2.7.1"
+russhwolf = "1.3.0"
+components-resources = "1.8.2"
+
+#Navigation
+backHandler = "1.8.2"
+materialnavigation = "1.7.0-beta02"
+navigation = "2.9.0-beta03"
+
+# Date & Time
+kotlinx-datetime = "0.7.1"
+
+
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-testJunit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
@@ -27,9 +55,47 @@ androidx-activity-compose = { module = "androidx.activity:activity-compose", ver
 androidx-lifecycle-viewmodel = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtimeCompose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 
+
+# Data
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "androidx-room" }
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "androidx-room" }
+sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
+datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }
+jetbrains-kotlinx = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json" , version.ref = "serialization"}
+components-resources = { group = "org.jetbrains.compose.components", name = "components-resources" , version.ref = "components-resources"}
+sqlite = { module = "androidx.sqlite:sqlite", version.ref = "sqlite" }
+
+
+# Compose & UI
+compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "foundation" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+io-coil-kt-coil3 = { group = "io.coil-kt.coil3", name = "coil-svg" , version.ref = "coil-svg"}
+com-russhwolf = { group = "com.russhwolf", name = "multiplatform-settings-no-arg" , version.ref = "russhwolf"}
+
+ # Date & Time
+kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime" , version.ref = "kotlinx-datetime"}
+
+# Navigation
+navigation = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigation" }
+material-navigation = { module = "org.jetbrains.compose.material:material-navigation", version.ref = "materialnavigation" }
+backHandler = { module = "org.jetbrains.compose.ui:ui-backhandler", version.ref = "backHandler" }
+compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose-ui" }
+
+
+# material icons
+androidx-compose = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "material-icons" }
+
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
+#Data
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+room = { id = "androidx.room", version.ref = "androidx-room" }
