@@ -1,10 +1,15 @@
 package com.googadev.medical_reminders.presentation.screens.main.components
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -13,17 +18,26 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlinx.datetime.DateTimeUnit
+import kotlinx.datetime.DayOfWeek
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.*
+
 
 @Composable
 fun CalendarStrip(selectedDate: LocalDate, onDateSelected: (LocalDate) -> Unit) {
-    val startOfWeek = selectedDate.with(DayOfWeek.MONDAY)
-    val dates = (0..6).map { startOfWeek.plusDays(it.toLong()) }
+    val daysToSubtract = selectedDate.dayOfWeek.ordinal - DayOfWeek.MONDAY.ordinal
+    val startOfWeek = selectedDate.minus(daysToSubtract.toLong(), DateTimeUnit.DAY)
+    val dates = (0..6).map { startOfWeek.plus(it.toLong(), DateTimeUnit.DAY) }
 
-    Column(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
+    Column(modifier = Modifier
+        .fillMaxWidth()
+        .padding(16.dp)) {
+
         Text("Today", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = Color(0xFF5B3E60))
         Spacer(Modifier.height(12.dp))
 
-        Row(horizontalArrangement = Arrangement.SpaceBetween) {
+        Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
             dates.forEach { date ->
                 val isSelected = date == selectedDate
                 Column(
@@ -54,3 +68,5 @@ fun CalendarStrip(selectedDate: LocalDate, onDateSelected: (LocalDate) -> Unit) 
         }
     }
 }
+
+

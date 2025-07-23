@@ -69,7 +69,8 @@ kotlin {
             // material icon
 //            implementation(libs.androidx.compose)
 
-
+            // Date && time
+            implementation(libs.kotlinx.datetime)
 
             // room database
             implementation(libs.androidx.room.runtime)

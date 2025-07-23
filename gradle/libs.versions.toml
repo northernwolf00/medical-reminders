@@ -76,6 +76,7 @@ com-russhwolf = { group = "com.russhwolf", name = "multiplatform-settings-no-arg
  # Date & Time
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime" , version.ref = "kotlinx-datetime"}
 
+
 # Navigation
 navigation = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigation" }
 material-navigation = { module = "org.jetbrains.compose.material:material-navigation", version.ref = "materialnavigation" }
